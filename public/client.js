@@ -15,9 +15,9 @@ window.location.hash = '';
 let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
-const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
+// const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
 const redirectUri = 'http://mymixtape.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -36,6 +36,7 @@ if (!_token) {
 
 // Page Setup
 showUser();
+console.log(_token);
 
 function showUser() {
   $.get('/user?token=' + _token, function(user) {
@@ -51,4 +52,23 @@ function logout() {
   _token = null;
   window.open('https://accounts.spotify.com/logout');
   location.reload();
+}
+
+function getGenresList() {
+  $('#genres-list').empty();
+  $.get('/genres?token=' + _token, function(genres) {
+    genres.forEach(function(genre) {
+      let genreButtonElement =
+        '<label class="button"><input type="checkbox" value="' +
+        genre +
+        '">' +
+        genre +
+        '</label>';
+      $('#genres-list').append(genreButtonElement);
+    });
+  });
+}
+
+function makePlaylist() {
+  $.post('/playlist?&token=' + _token);
 }

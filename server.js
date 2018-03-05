@@ -33,7 +33,7 @@ app.get('/genres', function(req, res) {
 
   let options = {
     url: requestUrl,
-    headers: { Authorization: 'Bearer ' + token },
+    headers: { 'Authorization': 'Bearer ' + token },
     json: true
   };
 
@@ -41,6 +41,8 @@ app.get('/genres', function(req, res) {
     res.json(body.genres);
   });
 });
+
+
 
 // Make that sucker a playlist
 app.post('/playlist', function(req, res) {

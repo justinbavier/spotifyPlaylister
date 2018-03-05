@@ -76,7 +76,7 @@ app.post('/playlist', function(req, res) {
       json: true,
       dataType: 'json',
       body: {
-        name: 'Playlist just for ' + displayName + '!!!',
+        name: 'Your brand new playlist',
         description: "It's your playlist!"
       }
     };

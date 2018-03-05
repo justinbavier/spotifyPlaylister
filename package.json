@@ -1,0 +1,22 @@
+{
+  "name": "crosshair",
+  "version": "1.0.0",
+  "description": "Build personalized playlists out of seemingly disconnected genres, moods, tempos, etc.",
+  "main": "server.js",
+  "scripts": {
+    "start": "server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "spotify"
+  ],
+  "author": "justin bavier",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "nodemon": "^1.17.1",
+    "querystring": "^0.2.0",
+    "request": "^2.83.0"
+  }
+}

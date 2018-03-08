@@ -2,21 +2,133 @@
   <head>
     <title>Crosshair</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+    <link href="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css"/>
     <script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="../js/jquery-ui.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>    
+    <script src="https://sp-bootstrap.global.ssl.fastly.net/8.0.0/sp-bootstrap.js"></script>
   </head>
   <body>
-    <div class="body">
-      <span>Hey, <span id="display-name"></span>, what kind of music are you into?</span>
+
+    <div class="container">
+
+      <button onclick="getValues();">Get Values</button>
+
+      <div class="row">
+        <div class="card">
+          <div class="row">
+            <div class="col-md-4"></div>
+            <span class="col-md-4 title text-center">Logged in as <span id="display-name"></span></span>
+            <div class="col-md-2"></div>
+            <a id="logout-button" class="logout-button btn col-md-2">Logout</a>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"></div>
+            <p class="description col-md-8 text-center">
+              Join Crosshair Music in using
+              the recommendation algorithm behind Spotify to build a playlist out
+              of seemingly disconnected genres, moods, tempos, etc. It's amazing
+              to discover how seemingly unrelated things can create something
+              beautiful
+            </p>
+          </div>
+
+          <div class="row">
+
+
+            <div class="inline space-after">
+              <button class="btn" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+            </div>
+
+            <!-- GENRE MODAL -->
+            <div class="modal fade" id="genre-select">
+              <div class="modal-dialog">
+                <div class="modal-content">
+
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Select genres</h4>
+                  </div>
+
+                  <div class="modal-body">
+                    <div id="genres-list" data-toggle="buttons">
+                      <label class="btn">
+                        <!-- Buttons for each genre to be appended here -->
+                      </label>
+                    </div>
+                  </div>
+
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-aubergine" data-dismiss="modal" onclick="getRecommendations();">Okay!</button>
+                  </div>
+
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            <!--  END GENRE MODAL -->
+          </div>
+
+          <div class="row">
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Popularity</p>
+              <div class="prefs-slider" id="popularity-slider"></div>
+            </div>
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Positivity</p>
+              <div class="prefs-slider" id="positivity-slider"></div>
+            </div>
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Energy</p>
+              <div class="prefs-slider" id="energy-slider"></div>
+            </div>
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Acousticness</p>
+              <div class="prefs-slider" id="acousticness-slider"></div>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Danceability</p>
+              <div class="prefs-slider" id="danceability-slider"></div>
+            </div>
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Instrumentalness</p>
+              <div class="prefs-slider" id="instrumentalness-slider"></div>
+            </div>
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Liveness</p>
+              <div class="prefs-slider" id="liveness-slider"></div>
+            </div>
+
+            <div class="prefs-section col-md-3 text-center">
+              <p class="prefs-text">Speechiness</p>
+              <div class="prefs-slider" id="speechiness-slider"></div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4"></div>
+        <a id="submit-button" class="submit-button col-md-4 btn">Add to playlist</a>
+      </div>
+
+
     </div>
-
-
-    <div id="genres-list" data-toggle="buttons">
-      <button onclick="getGenresList();">List genres</button>
-    </div>
-
-    <button onclick="makePlaylist();">Create playlist</button>
-
-    <button onclick="logout();">Logout</button>
-    <script src="../client.js"></script>
   </body>
+
+  <script src="../js/client.js"></script>
 <html>

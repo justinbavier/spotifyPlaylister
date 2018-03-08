@@ -1,0 +1,125 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100%;
+  background-image: linear-gradient(transparent, #000000);
+  width: 100%;
+}
+
+.container {
+  width: 90% !important;
+}
+
+.btn:hover {
+  background: rgba(255, 0, 0, 0.55);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.btn:focus {
+  background: rgba(0, 0, 0, 0.85);
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.card {
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 1rem;
+  padding: 5%;
+}
+
+/* ================== */
+/* ===== Header ===== */
+/* ================== */
+.logout-button {
+  background: rgba(255, 255, 255, 0.85);
+  color: black;
+  border-radius: 3rem;
+}
+
+.title {
+  font-size: 3.25rem;
+  color: white;
+}
+
+.description {
+  font-size: 1.8rem;
+  color: white;
+}
+
+/* ================== */
+/* ===== Genres ===== */
+/* ================== */
+.modal-trigger {
+  background: rgba(255, 255, 255, 0.85);
+  color: black;
+  border-radius: 3rem;
+}
+
+.modal-dialog {
+  width: 80%;
+}
+
+#genres-list {
+  text-align: center;
+}
+
+#genres-list .btn {
+  margin: 5px;
+}
+/* ======================= */
+/* ===== Preferences ===== */
+/* ======================= */
+.prefs-text {
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+
+.prefs-slider {
+  margin: 0 auto;
+  height: 10rem;
+}
+
+.ui-widget-header .ui-slider-range {
+  background: #000000;
+  border: none;
+}
+
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+  border: 2px solid #000000;
+  background: #3dbd00;
+  outline: none;
+  cursor: pointer;
+  border-radius: 1.2rem;
+}
+
+.ui-widget.ui-widget-content {
+  border: 1px solid #503750;
+}
+
+.ui-slider-handle {
+  -ms-touch-action: none;
+  touch-action: none;
+}
+
+/* ================== */
+/* ===== Submit ===== */
+/* ================== */
+.submit-button {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 3rem;
+  color: #000000;
+}

@@ -9,11 +9,17 @@ body {
 }
 
 .container {
-  width: 90% !important;
+  width: 80% !important;
+}
+
+.btn {
+  background: rgba(255, 255, 255, 0.85);
+  color: black;
+  border-radius: 3rem;
 }
 
 .btn:hover {
-  background: rgba(255, 0, 0, 0.55);
+  background: rgba(200, 200, 200, 0.85);
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;
@@ -22,7 +28,7 @@ body {
 }
 
 .btn:focus {
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(255, 255, 255, 0.85); */
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
   -ms-transition: 0.3s;
@@ -39,12 +45,6 @@ body {
 /* ================== */
 /* ===== Header ===== */
 /* ================== */
-.logout-button {
-  background: rgba(255, 255, 255, 0.85);
-  color: black;
-  border-radius: 3rem;
-}
-
 .title {
   font-size: 3.25rem;
   color: white;
@@ -58,12 +58,6 @@ body {
 /* ================== */
 /* ===== Genres ===== */
 /* ================== */
-.modal-trigger {
-  background: rgba(255, 255, 255, 0.85);
-  color: black;
-  border-radius: 3rem;
-}
-
 .modal-dialog {
   width: 80%;
 }

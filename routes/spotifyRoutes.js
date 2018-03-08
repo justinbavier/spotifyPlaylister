@@ -95,8 +95,9 @@ module.exports = app => {
         json: true,
         dataType: 'json',
         body: {
-          name: 'Your brand new playlist',
-          description: "It's your playlist!"
+          name: displayName + `'s Recommended Tracks`,
+          description:
+            'Recommended tracks based on ' + genres
         }
       };
 

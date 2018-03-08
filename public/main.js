@@ -255,12 +255,11 @@ function getRecommendations() {
             trackUris.push(track.uri);
           });
           localStorage.setItem('currentTracks', trackUris.join());
-          console.log(trackIds);
         } else {
-          console.log('Try more broad parameters');
+          alert('Try more broad parameters');
         }
       } else {
-        console.log('Please pick some genres');
+        alert('Please pick at least 1 genre!');
       }
     }
   );

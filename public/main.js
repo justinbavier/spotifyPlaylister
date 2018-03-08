@@ -38,6 +38,10 @@ if (!_token) {
 showUser();
 setUpSliders();
 
+$(function () {
+  $('[data-toggle="popover"]').popover()
+});
+
 // Button Functions
 $('#logout-button').click(function() {
   logout();
@@ -108,31 +112,83 @@ function getGenresList() {
 }
 
 function setUpSliders() {
-  const sliderConfig = {
+  $('#positivity-slider').slider({
     orientation: 'vertical',
     min: 0,
     max: 1,
     step: 0.01,
-    value: 0,
+    value: .5,
     stop: function() {
       getRecommendations();
     }
-  };
-
-  $('#positivity-slider').slider(sliderConfig);
-  $('#energy-slider').slider(sliderConfig);
-  $('#acousticness-slider').slider(sliderConfig);
-  $('#danceability-slider').slider(sliderConfig);
-  $('#instrumentalness-slider').slider(sliderConfig);
-  $('#liveness-slider').slider(sliderConfig);
-  $('#speechiness-slider').slider(sliderConfig);
+  });
+  $('#energy-slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: .3,
+    stop: function() {
+      getRecommendations();
+    }
+  });
+  $('#acousticness-slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: .65,
+    stop: function() {
+      getRecommendations();
+    }
+  });
+  $('#danceability-slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: .55,
+    stop: function() {
+      getRecommendations();
+    }
+  });
+  $('#instrumentalness-slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: .4,
+    stop: function() {
+      getRecommendations();
+    }
+  });
+  $('#liveness-slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: .6,
+    stop: function() {
+      getRecommendations();
+    }
+  });
+  $('#speechiness-slider').slider({
+    orientation: 'vertical',
+    min: 0,
+    max: 1,
+    step: 0.01,
+    value: .5,
+    stop: function() {
+      getRecommendations();
+    }
+  });
 
   $('#popularity-slider').slider({
     orientation: 'vertical',
     min: 0,
     max: 100,
     step: 1,
-    value: 0,
+    value: 40,
     stop: function() {
       getRecommendations()
     }
@@ -142,26 +198,26 @@ function setUpSliders() {
 function getSliderValues() {
   let values = {};
 
-  let min_popularity = $('#popularity-slider').slider('values', 0);
-  let min_positivity = $('#positivity-slider').slider('values', 0);
-  let min_energy = $('#energy-slider').slider('values', 0);
-  let min_acousticness = $('#acousticness-slider').slider('values', 0);
-  let min_danceability = $('#danceability-slider').slider('values', 0);
-  let min_instrumentalness = $('#instrumentalness-slider').slider(
+  let target_popularity = $('#popularity-slider').slider('values', 0);
+  let target_positivity = $('#positivity-slider').slider('values', 0);
+  let target_energy = $('#energy-slider').slider('values', 0);
+  let target_acousticness = $('#acousticness-slider').slider('values', 0);
+  let target_danceability = $('#danceability-slider').slider('values', 0);
+  let target_instrumentalness = $('#instrumentalness-slider').slider(
     'values',
     0
   );
-  let min_liveness = $('#liveness-slider').slider('values', 0);
-  let min_speechiness = $('#speechiness-slider').slider('values', 0);
+  let target_liveness = $('#liveness-slider').slider('values', 0);
+  let target_speechiness = $('#speechiness-slider').slider('values', 0);
 
-  values['min_popularity'] = min_popularity;
-  values['min_positivity'] = min_positivity;
-  values['min_energy'] = min_energy;
-  values['min_acousticness'] = min_acousticness;
-  values['min_danceability'] = min_danceability;
-  values['min_instrumentalness'] = min_instrumentalness;
-  values['min_liveness'] = min_liveness;
-  values['min_speechiness'] = min_speechiness;
+  values['target_popularity'] = target_popularity;
+  values['target_positivity'] = target_positivity;
+  values['target_energy'] = target_energy;
+  values['target_acousticness'] = target_acousticness;
+  values['target_danceability'] = target_danceability;
+  values['target_instrumentalness'] = target_instrumentalness;
+  values['target_liveness'] = target_liveness;
+  values['target_speechiness'] = target_speechiness;
 
   return values;
 }
@@ -222,27 +278,28 @@ function makePlaylist() {
         '&token=' +
         _token
     );
-    alert(
-      '/playlist?tracks=' +
-        localStorage.getItem('currentTracks') +
-        '&genres=' +
-        localStorage.getItem('currentGenres') +
-        '&features=' +
-        localStorage.getItem('currentFeatures') +
-        '&token=' +
-        _token
-    );
+    alert("Success! Check Spotify for you playlist!")
   } else if (!localStorage.getItem('currentTracks')) {
     console.log('No tracks :/');
   }
   clearLocals();
 }
 
-function addToPlaylist() {}
+// User creates new playlist upon login
+// function newPlaylist() {
+//
+//   //$.post('/newPlaylist?playlistName=TESTING&token=' + _token);
+// }
+
+
+// User adds to recently created playlist, will need to store the playlist id
+// function addToPlaylist() {
+//
+//
+// }
 
 function clearLocals() {
   localStorage.setItem('currentTracks', '');
   localStorage.setItem('currentGenres', '');
   localStorage.setItem('currentFeatures', '');
-  alert(localStorage.getItem('currentGenres'));
 }

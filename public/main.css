@@ -119,6 +119,11 @@ body {
   color: white;
 }
 
+.faders-container {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
 .prefs-content {
   /* margin-left: 2.5%; */
   width: 12.5rem;

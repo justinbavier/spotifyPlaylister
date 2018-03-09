@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+// const redirectUri = 'http://crosshair-playlist.herokuapp.com';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -119,7 +119,7 @@ function setUpSliders() {
     step: 0.01,
     value: .5,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
   $('#energy-slider').slider({
@@ -129,7 +129,7 @@ function setUpSliders() {
     step: 0.01,
     value: .3,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
   $('#acousticness-slider').slider({
@@ -139,7 +139,7 @@ function setUpSliders() {
     step: 0.01,
     value: .65,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
   $('#danceability-slider').slider({
@@ -149,7 +149,7 @@ function setUpSliders() {
     step: 0.01,
     value: .55,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
   $('#instrumentalness-slider').slider({
@@ -159,7 +159,7 @@ function setUpSliders() {
     step: 0.01,
     value: .4,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
   $('#liveness-slider').slider({
@@ -169,7 +169,7 @@ function setUpSliders() {
     step: 0.01,
     value: .6,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
   $('#speechiness-slider').slider({
@@ -179,7 +179,7 @@ function setUpSliders() {
     step: 0.01,
     value: .5,
     stop: function() {
-      getRecommendations();
+      console.log('slider stopped');
     }
   });
 
@@ -190,7 +190,7 @@ function setUpSliders() {
     step: 1,
     value: 40,
     stop: function() {
-      getRecommendations()
+      console.log('slider stopped');
     }
   });
 }

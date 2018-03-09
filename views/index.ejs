@@ -1,24 +1,35 @@
 <% include _header %>
 
     <div class="container">
-
-      <div class="space-after"></div>
-
       <div class="row">
         <div class="card">
+          <!-- LOGO ROW -->
+          <div class="row">
+            <div class="col-md-5"></div>
+            <div class="logo-wrapper col-md-2">
+              <div class="col-md-1"></div>
+              <img class="col-md-10" src="/images/crosshair-logo.svg"/>
+            </div>
+          </div>
+
+          <div class="space-after"></div>
 
           <!--  HEADER ROW -->
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-3"></div>
+            ==== No need to show current user for Crosshair display ====================================
+            ============================================================================================
             <span class="col-md-6 title text-center">Logged in as <span id="display-name"></span></span>
-            <!-- No need for logout button for Crosshair display =======================================
+            ============================================================================================
+            ============================================================================================
+            ==== No need for logout button for Crosshair display =======================================
             ============================================================================================
             <div class="col-md-1"></div>
 
             <a id="logout-button" class="logout-button btn col-md-2">Logout</a>
             ============================================================================================
-            ======================================================================================== -->
-          </div>
+            ============================================================================================
+          </div> -->
 
           <!--  DESCRIPTION ROW -->
           <div class="row">
@@ -77,62 +88,119 @@
             </p>
           </div>
 
+
           <!-- FADERS TOP ROW -->
           <div class="row">
-            <div class="prefs-section col-md-3 text-center">
-              <div class="prefs-slider" id="popularity-slider"></div>
-              <p class="prefs-text">Popularity</p>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="popularity-value">40</span>
+              </div>
             </div>
 
-            <div class="prefs-section col-md-3 text-center">
-              <div class="prefs-slider" id="positivity-slider"></div>
-              <p class="prefs-text">Positivity</p>
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="positivity-value">40</span>
+              </div>
             </div>
 
-            <div class="prefs-section col-md-3 text-center">
-              <div class="prefs-slider" id="energy-slider"></div>
-              <p class="prefs-text">Energy</p>
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="energy-value">40</span>
+              </div>
             </div>
 
-            <div class="prefs-section col-md-3 text-center">
-              <div class="prefs-slider" id="acousticness-slider"></div>
-              <p class="prefs-text">Acousticness</p>
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="acousticness-value">40</span>
+              </div>
             </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="danceability-value">40</span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="instrumentalness-value">40</span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="liveness-value">40</span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="speechiness-value">40</span>
+              </div>
+            </div>
+
           </div>
 
-          <!--  FADERS BOTTOM ROW -->
           <div class="row">
-            <div class="prefs-section col-md-3 text-center">
+            <div class="prefs-section col-md-1">
+              <div class="prefs-slider" id="popularity-slider"></div>
+            </div>
+            <div class="prefs-section col-md-1">
+              <div class="prefs-slider" id="positivity-slider"></div>
+            </div>
+            <div class="prefs-section col-md-1">
+              <div class="prefs-slider" id="energy-slider"></div>
+            </div>
+            <div class="prefs-section col-md-1">
+              <div class="prefs-slider" id="acousticness-slider"></div>
+            </div>
+            <div class="prefs-section col-md-1">
               <div class="prefs-slider" id="danceability-slider"></div>
-              <p class="prefs-text">Danceability</p>
             </div>
-
-            <div class="prefs-section col-md-3 text-center">
+            <div class="prefs-section col-md-1">
               <div class="prefs-slider" id="instrumentalness-slider"></div>
-              <p class="prefs-text">Instrumentalness</p>
             </div>
-
-            <div class="prefs-section col-md-3 text-center">
+            <div class="prefs-section col-md-1">
               <div class="prefs-slider" id="liveness-slider"></div>
-              <p class="prefs-text">Liveness</p>
             </div>
-
-            <div class="prefs-section col-md-3 text-center">
+            <div class="prefs-section col-md-1">
               <div class="prefs-slider" id="speechiness-slider"></div>
-              <p class="prefs-text">Speechiness</p>
             </div>
           </div>
+
+          <div class="row">
+            <p class="prefs-text col-md-1 text-center">Popularity</p>
+            <p class="prefs-text col-md-1 text-center">Positivity</p>
+            <p class="prefs-text col-md-1 text-center">Energy</p>
+            <p class="prefs-text col-md-1 text-center">Acousticness</p>
+            <p class="prefs-text col-md-1 text-center">Danceability</p>
+            <p class="prefs-text col-md-1 text-center">Instrumentalness</p>
+            <p class="prefs-text col-md-1 text-center">Liveness</p>
+            <p class="prefs-text col-md-1 text-center">Speechiness</p>
+          </div>
+
+          <div class="space-after"></div>
 
           <!-- SUBMIT BUTTON -->
           <div class="row">
-            <div class="col-md-4"></div>
-            <button id="submit-button" type="submit" class="submit-button col-md-4 btn">Add to playlist</button>
+            <div class="col-md-1"></div>
+            <button id="submit-button" type="submit" class="submit-button col-md-4 btn">Create new playlist</button>
+            <div class="col-md-2"></div>
+            <button id="tracks-button" type="submit" class="tracks-button col-md-4 btn">Add to playlist</button>
+          </div>
+
+          <!--  TRACKS BUTTON -->
+          <div class="row">
+
           </div>
         </div>
         <!--  BOTTOM OF CARD -->
       </div>
 
-
+      <div class="col-md-4"></div>
+        <button style="margin-bottom: 3rem;" id="clear-button" type="submit" class="clear-button col-md-4 btn">Clear Locals</button>
+      <div class="col-md-4"></div>
 
     </div>
 <% include _footer %>

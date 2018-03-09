@@ -45,7 +45,7 @@ module.exports = app => {
       spotifyBaseUrl +
       'recommendations?' +
       querystring.stringify({
-        limit: 20,
+        limit: 3,
         market: 'from_token'
       }) +
       '&' +
@@ -96,8 +96,7 @@ module.exports = app => {
         dataType: 'json',
         body: {
           name: displayName + `'s Recommended Tracks`,
-          description:
-            'Recommended tracks based on ' + genres
+          description: 'Recommended tracks based on ' + genres
         }
       };
 
@@ -126,66 +125,71 @@ module.exports = app => {
   });
 
   // 1. Create Empty Playlist
-  // app.post('/newPlaylist', function(req, res) {
-  //   let token = req.query.token;
-  //   let playlistName = req.query.playlistName;
-  //   let userId, playlistUrl;
-  //   // Get User Id
-  //   let requestUrl = spotifyBaseUrl + 'me';
-  //
-  //   let options = {
-  //     url: requestUrl,
-  //     headers: { Authorization: 'Bearer ' + token },
-  //     json: true
-  //   };
-  //
-  //   request.get(options, function(error, response, body) {
-  //     userId = body.id;
-  //     displayName = body.display_name;
-  //     // Create Playlist
-  //     requestUrl = spotifyBaseUrl + 'users/' + userId + '/playlists';
-  //
-  //     options = {
-  //       url: requestUrl,
-  //       headers: {
-  //         Authorization: 'Bearer ' + token,
-  //         'Content-Type': 'application/json'
-  //       },
-  //       json: true,
-  //       dataType: 'json',
-  //       body: {
-  //         name: playlistName,
-  //         description: "It's your playlist!"
-  //       }
-  //     };
-  //     request.post(options, function(error, response, body) {
-  //       console.log(body)
-  //     })
-  //   });
-  // });
+  app.post('/newPlaylist', function(req, res) {
+    let token = req.query.token;
+    let playlistName = req.query.playlistName;
+    let userId, playlistUrl;
+    // Get User Id
+    let requestUrl = spotifyBaseUrl + 'me';
 
-  // // 2.
-  // app.post('/addTracks', function(req, res) {
-  //   let tracks = req.query.tracks;
-  //   let genres = req.query.genres;
-  //   let token = req.query.token;
-  //   let features = req.query.features;
-  //   let userId, playlistUrl;
-  //
-  //   // 1. Get User ID
-  //   let requestUrl = spotifyBaseUrl + 'me';
-  //
-  //   let options = {
-  //     url: requestUrl,
-  //     headers: { Authorization: 'Bearer ' + token },
-  //     json: true
-  //   };
-  //
-  //   request.get(options, function(error, response, body) {
-  //     userId = body.id;
-  //   });
-  //   // 2. Get Playlist ID
-  //
-  //   // 3. Add tracks to playlist
-  // });
+    let options = {
+      url: requestUrl,
+      headers: { Authorization: 'Bearer ' + token },
+      json: true
+    };
+
+    request.get(options, function(error, response, body) {
+      userId = body.id;
+      displayName = body.display_name;
+      // Create Playlist
+      requestUrl = spotifyBaseUrl + 'users/' + userId + '/playlists';
+
+      options = {
+        url: requestUrl,
+        headers: {
+          Authorization: 'Bearer ' + token,
+          'Content-Type': 'application/json'
+        },
+        json: true,
+        dataType: 'json',
+        body: {
+          name: playlistName,
+          description: "It's your playlist!"
+        }
+      };
+      request.post(options, function(error, response, body) {
+        res.json(body);
+      });
+    });
+  });
+
+  // 2.
+  app.post('/addTracks', function(req, res) {
+    let tracks = req.query.tracks;
+    //let genres = req.query.genres;
+    let token = req.query.token;
+    //let features = req.query.features;
+    let userId;
+
+    let playlistUrl =
+      req.query.playlistUrl;
+
+    // 3. Add tracks to playlist
+    requestUrl =
+      playlistUrl +
+      '/tracks?' +
+      querystring.stringify({
+        uris: tracks
+      });
+
+    options = {
+      url: requestUrl,
+      headers: { Authorization: 'Bearer ' + token },
+      json: true
+    };
+
+    request.post(options, function(error, response, body) {
+      res.sendStatus(200);
+    });
+  });
 };

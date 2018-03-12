@@ -1,5 +1,4 @@
 <% include _header %>
-
     <div class="container">
       <div class="row">
         <div class="card">
@@ -54,10 +53,17 @@
 
           <div class="space-after"></div>
 
+          <div class="row">
+            <div class="col-md-2"></div>
+
+          </div>
+
           <!--  SWITCHES SECTION -->
           <div class="row">
             <div class="col-md-2"></div>
             <p class="mode-label col-md-2">Major - Minor</p>
+            <div class="col-md-4"></div>
+            <p class="tempo-label col-md-4">Tempo (0 - 200)</p>
           </div>
           <div class="row">
             <div class="col-md-2"></div>
@@ -66,6 +72,10 @@
                 <input id="mode-value" type="checkbox" checked />
                 <span class="mode-slider round"></span>
               </label>
+            </div>
+            <div class="col-md-4"></div>
+            <div class="tempo-section col-md-3">
+              <div class="tempo-slider" id="tempo-slider"></div>
             </div>
           </div>
 
@@ -182,7 +192,7 @@
           <!-- SUBMIT BUTTON -->
           <div class="row">
             <div class="col-md-1"></div>
-            <button id="submit-button" type="submit" class="submit-button col-md-4 btn">Create new playlist</button>
+            <button id="submit-button" type="submit" data-toggle="modal" data-target="#playlist-setup" class="submit-button col-md-4 btn">Create new playlist</button>
             <div class="col-md-2"></div>
             <button id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" class="tracks-button col-md-4 btn">Add to playlist</button>
           </div>
@@ -222,18 +232,45 @@
           </div>
           <!--  END GENRE MODAL -->
 
+          <!-- PLAYLIST SETUP MODAL -->
+          <div class="modal fade" id="playlist-setup">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Please provide the following information:</h4>
+                </div>
+                <div class="form">
+                  <div class="modal-body">
+                    <div class="form-group">
+                      <label for="playlist-name">Playlist Name</label>
+                      <input type="text" class="form-control" id="playlist-name" placeholder="Playlist Name">
+                    </div>
+                    <div class="form-group">
+                      <label for="playlist-description">Give your playlist a description...</label>
+                      <textarea type="text" class="form-control" id="playlist-description" rows="3"></textarea>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" type="submit" class="btn" data-dismiss="modal" onclick="newPlaylist();">Create Playlist</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--  -->
+
           <!--  SUCCESS MODAL -->
 
-          <div class="modal col-md-6" id="success-prompt">
-            <div class"modal-dialog modal-dialog-centered">
+          <div class="modal fade" id="success-prompt">
+            <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
                   <h4 class="modal-title">You did it!</h4>
                 </div>
                 <div class="modal-body">
-                  Tracks will display here
+                  <p>Tracks will display here</p>
                   <div id="tracks">
-                    <h4>Select some genres</h4>s
+                    <h4>Select some genres</h4>
                   </div>
                 </div>
                 <div class="modal-footer">

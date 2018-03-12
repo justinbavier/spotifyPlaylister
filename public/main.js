@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+// const redirectUri = 'http://crosshair-playlist.herokuapp.com';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -48,10 +48,10 @@ $(function() {
 //   return false;
 // });
 
-$('#submit-button').click(function() {
-  newPlaylist();
-  return false;
-});
+// $('#submit-button').click(function() {
+//   newPlaylist();
+//   return false;
+// });
 
 // $('#tracks-button').click(function() {
 //   addTracks();
@@ -252,6 +252,22 @@ function setUpSliders() {
     }
   });
 
+  $('#tempo-slider').slider({
+    min: 0,
+    max: 200,
+    step: 1,
+    value: 120,
+    stop: function() {
+      getRecommendations();
+    },
+    create: function() {
+      $('#tempo-value').text($('#tempo-slider').slider('values', 0));
+    },
+    slider: function() {
+      $('#tempo-value').text($('#tempo-slider').slider('values', 0));
+    }
+  });
+
   $('#popularity-slider').slider({
     orientation: 'vertical',
     min: 0,
@@ -273,8 +289,6 @@ function setUpSliders() {
 function getSliderValues() {
   let values = {};
 
-
-
   let target_popularity = $('#popularity-slider').slider('values', 0);
   let target_positivity = $('#positivity-slider').slider('values', 0);
   let target_energy = $('#energy-slider').slider('values', 0);
@@ -286,6 +300,7 @@ function getSliderValues() {
   );
   let target_liveness = $('#liveness-slider').slider('values', 0);
   let target_speechiness = $('#speechiness-slider').slider('values', 0);
+  let target_tempo = $('#tempo-slider').slider('values', 0);
 
   if ($('#mode-value').is(':checked')) {
     values['target_mode'] = 0;
@@ -301,6 +316,7 @@ function getSliderValues() {
   values['target_instrumentalness'] = target_instrumentalness;
   values['target_liveness'] = target_liveness;
   values['target_speechiness'] = target_speechiness;
+  values['target_tempo'] = target_tempo;
 
   console.log(values);
   return values;
@@ -410,7 +426,7 @@ function addTracks() {
     alert(
       'Success! Tracks added to your playlist! Pick some different genres to add even more!'
     );
-    //clearLocals();
+    clearLocals();
   } else if (!localStorage.getItem('currentTracks')) {
     alert(`There's no tracks to add! Pick a genre...`);
   } else if (!localStorage.getItem('currentPlaylist')) {
@@ -422,17 +438,31 @@ function addTracks() {
 
 //User creates new playlist upon login
 function newPlaylist() {
-  $.post('/newPlaylist?playlistName=TESTING&token=' + _token, function(
-    playlist
-  ) {
-    localStorage.setItem('currentPlaylist', playlist.href);
-    localStorage.setItem('playlistName', playlist.name);
-    alert(
-      'Playlist ' +
-        localStorage.getItem('playlistName') +
-        ' successfully created!'
+  let playlistName = document.getElementById('playlist-name').value;
+  let playlistDescription = document.getElementById('playlist-description')
+    .value;
+  alert(playlistDescription);
+  if (!playlistName) {
+    alert('Please give you playlist a name!');
+  } else if (playlistName) {
+    $.post(
+      '/newPlaylist?playlistName=' +
+        playlistName +
+        '&playlistDescription=' +
+        playlistDescription +
+        '&token=' +
+        _token,
+      function(playlist) {
+        localStorage.setItem('currentPlaylist', playlist.href);
+        localStorage.setItem('playlistName', playlist.name);
+        alert(
+          'Playlist ' +
+            localStorage.getItem('playlistName') +
+            ' successfully created!'
+        );
+      }
     );
-  });
+  }
 }
 
 function clearCache() {

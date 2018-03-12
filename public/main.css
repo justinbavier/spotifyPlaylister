@@ -121,7 +121,7 @@ body {
   /* display: inline-block; */
   width: 60px;
   height: 25px;
-  margin-left: 3.5rem;
+  margin-left: 1rem;
 }
 
 /* Hide default HTML checkbox */
@@ -171,6 +171,10 @@ input:checked + .mode-slider:before {
 }
 
 .mode-label {
+  color: #ffffff;
+}
+
+.tempo-label {
   color: #ffffff;
 }
 
@@ -261,7 +265,7 @@ html .ui-button.ui-state-disabled:active {
 /* ===== Submit ===== */
 /* ================== */
 #tracks {
-  width: 80%;
+  /* width: 80%; */
   height: 30%;
   overflow-y: scroll;
   border: 1px #ccc solid;

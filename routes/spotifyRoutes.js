@@ -125,19 +125,20 @@ module.exports = app => {
   });
 
   app.get('/tracks', function(req, res) {
-
     let ids = req.query.ids;
     let token = req.query.token;
 
-    let requestURL = spotifyBaseUrl + 'tracks?' +
-    querystring.stringify({
-      ids: ids,
-      market: 'from_token'
-    });
+    let requestURL =
+      spotifyBaseUrl +
+      'tracks?' +
+      querystring.stringify({
+        ids: ids,
+        market: 'from_token'
+      });
 
     let options = {
       url: requestURL,
-      headers: { 'Authorization': 'Bearer ' + token },
+      headers: { Authorization: 'Bearer ' + token },
       json: true
     };
 
@@ -150,6 +151,7 @@ module.exports = app => {
   app.post('/newPlaylist', function(req, res) {
     let token = req.query.token;
     let playlistName = req.query.playlistName;
+    let playlistDescription = req.query.playlistDescription;
     let userId, playlistUrl;
     // Get User Id
     let requestUrl = spotifyBaseUrl + 'me';
@@ -176,7 +178,7 @@ module.exports = app => {
         dataType: 'json',
         body: {
           name: playlistName,
-          description: "It's your playlist!"
+          description: playlistDescription
         }
       };
       request.post(options, function(error, response, body) {
@@ -193,8 +195,7 @@ module.exports = app => {
     //let features = req.query.features;
     let userId;
 
-    let playlistUrl =
-      req.query.playlistUrl;
+    let playlistUrl = req.query.playlistUrl;
 
     // 3. Add tracks to playlist
     requestUrl =

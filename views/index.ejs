@@ -49,102 +49,94 @@
           <div class="row">
             <div class="col-md-4"></div>
               <button class="btn col-md-4" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
-            <!-- GENRE MODAL -->
-            <div class="modal fade" id="genre-select">
-              <div class="modal-dialog">
-                <div class="modal-content">
 
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Select genres</h4>
-                    <p>Make sure you hit 'Okay' button at bottom!</p>
-                  </div>
-
-                  <div class="modal-body">
-                    <div id="genres-list" data-toggle="buttons">
-                      <label class="btn">
-                        <!-- Buttons for each genre to be appended here -->
-                      </label>
-                    </div>
-                  </div>
-
-                  <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal" onclick="getRecommendations();">Okay!</button>
-                  </div>
-
-                </div><!-- /.modal-content -->
-              </div><!-- /.modal-dialog -->
-            </div><!-- /.modal -->
-            <!--  END GENRE MODAL -->
           </div>
 
           <div class="space-after"></div>
 
-          <!-- FADERS SECTION -->
+          <!--  SWITCHES SECTION -->
           <div class="row">
+            <div class="col-md-2"></div>
+            <p class="mode-label col-md-2">Major - Minor</p>
+          </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div onclick="getRecommendations();">
+              <label class="switch col-md-2">
+                <input id="mode-value" type="checkbox" checked />
+                <span class="mode-slider round"></span>
+              </label>
+            </div>
+          </div>
+
+          <!--  END SWITCHES SECTION -->
+
+          <div class="space-after"></div>
+
+          <!-- FADERS SECTION -->
+          <!-- <div class="row">
             <div class="col-md-3"></div>
             <p class="instructions text-center col-md-6">
               Drag the faders to adjust the parameters!
             </p>
-          </div>
+          </div> -->
 
 
           <!-- FADERS TOP ROW -->
-          <div class="faders-container">
-
-            <div class="row">
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="popularity-value">40</span>
-                </div>
+          <div class="row">
+            <div class="col-md-2"></div>
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="popularity-value"></span>
               </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="positivity-value">40</span>
-                </div>
-              </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="energy-value">40</span>
-                </div>
-              </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="acousticness-value">40</span>
-                </div>
-              </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="danceability-value">40</span>
-                </div>
-              </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="instrumentalness-value">40</span>
-                </div>
-              </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="liveness-value">40</span>
-                </div>
-              </div>
-
-              <div class="prefs-content col-md-1 text-center">
-                <div>
-                  <span id="speechiness-value">40</span>
-                </div>
-              </div>
-
             </div>
 
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="positivity-value"></span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="energy-value"></span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="acousticness-value"></span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="danceability-value"></span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="instrumentalness-value"></span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="liveness-value"></span>
+              </div>
+            </div>
+
+            <div class="prefs-content col-md-1 text-center">
+              <div>
+                <span id="speechiness-value"></span>
+              </div>
+            </div>
+
+          </div>
+
             <div class="row">
+              <div class="col-md-2"></div>
               <div class="prefs-section col-md-1">
                 <div class="prefs-slider" id="popularity-slider"></div>
               </div>
@@ -172,6 +164,7 @@
             </div>
 
             <div class="row">
+              <div class="col-md-2"></div>
               <p class="prefs-text col-md-1 text-center">Popularity</p>
               <p class="prefs-text col-md-1 text-center">Positivity</p>
               <p class="prefs-text col-md-1 text-center">Energy</p>
@@ -182,7 +175,7 @@
               <p class="prefs-text col-md-1 text-center">Speechiness</p>
             </div>
 
-          </div>
+          <!-- </div> -->
 
           <div class="space-after"></div>
 
@@ -191,17 +184,67 @@
             <div class="col-md-1"></div>
             <button id="submit-button" type="submit" class="submit-button col-md-4 btn">Create new playlist</button>
             <div class="col-md-2"></div>
-            <button id="tracks-button" type="submit" class="tracks-button col-md-4 btn">Add to playlist</button>
+            <button id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" class="tracks-button col-md-4 btn">Add to playlist</button>
           </div>
 
           <!--  TRACKS BUTTON -->
           <div class="row">
-
           </div>
         </div>
         <!--  BOTTOM OF CARD -->
       </div>
+        <!--  MODALS -->
+          <!-- GENRE MODAL -->
+          <div class="modal fade" id="genre-select">
+            <div class="modal-dialog">
+              <div class="modal-content">
 
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Select genres</h4>
+                  <p>Make sure you hit 'Okay' button at bottom!</p>
+                </div>
+
+                <div class="modal-body">
+                  <div id="genres-list" data-toggle="buttons">
+                    <label class="btn">
+                      <!-- Buttons for each genre to be appended here -->
+                    </label>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-dismiss="modal" onclick="getRecommendations();">Okay!</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!--  END GENRE MODAL -->
+
+          <!--  SUCCESS MODAL -->
+
+          <div class="modal col-md-6" id="success-prompt">
+            <div class"modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">You did it!</h4>
+                </div>
+                <div class="modal-body">
+                  Tracks will display here
+                  <div id="tracks">
+                    <h4>Select some genres</h4>s
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn" data-dismiss="modal" onclick="addTracks();">GEt OutttttttTTT</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--  END SUCCESS MODAL -->
+
+        <!--  END MODALS-->
       <div class="col-md-4"></div>
         <button style="margin-bottom: 3rem;" id="clear-button" type="submit" class="clear-button col-md-4 btn">Clear Locals</button>
       <div class="col-md-4"></div>

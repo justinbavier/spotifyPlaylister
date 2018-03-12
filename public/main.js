@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+// const redirectUri = 'http://crosshair-playlist.herokuapp.com';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -53,10 +53,10 @@ $('#submit-button').click(function() {
   return false;
 });
 
-$('#tracks-button').click(function() {
-  addTracks();
-  return false;
-});
+// $('#tracks-button').click(function() {
+//   addTracks();
+//   return false;
+// });
 
 $('#clear-button').click(function() {
   clearCache();
@@ -130,7 +130,10 @@ function setUpSliders() {
     step: 0.01,
     value: 0.5,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#positivity-value').text($('#positivity-slider').slider('values', 0));
     },
     slide: function() {
       $('#positivity-value').text($('#positivity-slider').slider('values', 0));
@@ -143,7 +146,10 @@ function setUpSliders() {
     step: 0.01,
     value: 0.3,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#energy-value').text($('#energy-slider').slider('values', 0));
     },
     slide: function() {
       $('#energy-value').text($('#energy-slider').slider('values', 0));
@@ -156,7 +162,12 @@ function setUpSliders() {
     step: 0.01,
     value: 0.65,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#acousticness-value').text(
+        $('#acousticness-slider').slider('values', 0)
+      );
     },
     slide: function() {
       $('#acousticness-value').text(
@@ -171,7 +182,12 @@ function setUpSliders() {
     step: 0.01,
     value: 0.55,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#danceability-value').text(
+        $('#danceability-slider').slider('values', 0)
+      );
     },
     slide: function() {
       $('#danceability-value').text(
@@ -186,7 +202,12 @@ function setUpSliders() {
     step: 0.01,
     value: 0.4,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#instrumentalness-value').text(
+        $('#instrumentalness-slider').slider('values', 0)
+      );
     },
     slide: function() {
       $('#instrumentalness-value').text(
@@ -201,7 +222,10 @@ function setUpSliders() {
     step: 0.01,
     value: 0.6,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#liveness-value').text($('#liveness-slider').slider('values', 0));
     },
     slide: function() {
       $('#liveness-value').text($('#liveness-slider').slider('values', 0));
@@ -214,7 +238,12 @@ function setUpSliders() {
     step: 0.01,
     value: 0.5,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#speechiness-value').text(
+        $('#speechiness-slider').slider('values', 0)
+      );
     },
     slide: function() {
       $('#speechiness-value').text(
@@ -230,7 +259,10 @@ function setUpSliders() {
     step: 1,
     value: 40,
     stop: function() {
-      console.log('slider stopped');
+      getRecommendations();
+    },
+    create: function() {
+      $('#popularity-value').text($('#popularity-slider').slider('values', 0));
     },
     slide: function() {
       $('#popularity-value').text($('#popularity-slider').slider('values', 0));
@@ -240,6 +272,8 @@ function setUpSliders() {
 
 function getSliderValues() {
   let values = {};
+
+
 
   let target_popularity = $('#popularity-slider').slider('values', 0);
   let target_positivity = $('#positivity-slider').slider('values', 0);
@@ -253,6 +287,12 @@ function getSliderValues() {
   let target_liveness = $('#liveness-slider').slider('values', 0);
   let target_speechiness = $('#speechiness-slider').slider('values', 0);
 
+  if ($('#mode-value').is(':checked')) {
+    values['target_mode'] = 0;
+  } else if ($('#mode-value').is(':not(:checked)')) {
+    values['target_mode'] = 1;
+  }
+
   values['target_popularity'] = target_popularity;
   values['target_positivity'] = target_positivity;
   values['target_energy'] = target_energy;
@@ -262,6 +302,7 @@ function getSliderValues() {
   values['target_liveness'] = target_liveness;
   values['target_speechiness'] = target_speechiness;
 
+  console.log(values);
   return values;
 }
 
@@ -298,6 +339,7 @@ function getRecommendations() {
             trackUris.push(track.uri);
           });
           localStorage.setItem('currentTracks', trackUris.join());
+          renderTracks(trackIds);
         } else {
           alert('Try more broad parameters');
         }
@@ -327,8 +369,36 @@ function getRecommendations() {
 //   clearLocals();
 // }
 
+function renderTracks(ids) {
+  $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
+    tracks.forEach(function(track) {
+      let image = track.album.images
+        ? track.album.images[0].url
+        : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
+      let trackElement =
+        '<div class="track-element" id="' +
+        track.uri +
+        '" onclick="play(\'' +
+        track.uri +
+        '\');"><div><img class="album-art" src="' +
+        image +
+        '"/><div><a href="https://open.spotify.com/track/' +
+        track.id +
+        '">' +
+        track.name +
+        '</a><p>' +
+        track.artists[0].name +
+        '</p></div></div></div>';
+      $('#tracks').append(trackElement);
+    });
+  });
+}
+
 function addTracks() {
-  if (localStorage.getItem('currentTracks') && localStorage.getItem('currentPlaylist')) {
+  if (
+    localStorage.getItem('currentTracks') &&
+    localStorage.getItem('currentPlaylist')
+  ) {
     $.post(
       '/addTracks?tracks=' +
         localStorage.getItem('currentTracks') +
@@ -337,12 +407,16 @@ function addTracks() {
         '&token=' +
         _token
     );
-    alert('Success! Tracks added to your playlist! Pick some different genres to add even more!');
-    clearLocals();
+    alert(
+      'Success! Tracks added to your playlist! Pick some different genres to add even more!'
+    );
+    //clearLocals();
   } else if (!localStorage.getItem('currentTracks')) {
     alert(`There's no tracks to add! Pick a genre...`);
   } else if (!localStorage.getItem('currentPlaylist')) {
-    alert(`You can't add tracks to a playlist you haven't created yet! Click the button...`)
+    alert(
+      `You can't add tracks to a playlist you haven't created yet! Click the button...`
+    );
   }
 }
 
@@ -353,7 +427,11 @@ function newPlaylist() {
   ) {
     localStorage.setItem('currentPlaylist', playlist.href);
     localStorage.setItem('playlistName', playlist.name);
-    alert('Playlist ' + localStorage.getItem('playlistName') + ' successfully created!');
+    alert(
+      'Playlist ' +
+        localStorage.getItem('playlistName') +
+        ' successfully created!'
+    );
   });
 }
 

@@ -124,6 +124,28 @@ module.exports = app => {
     });
   });
 
+  app.get('/tracks', function(req, res) {
+
+    let ids = req.query.ids;
+    let token = req.query.token;
+
+    let requestURL = spotifyBaseUrl + 'tracks?' +
+    querystring.stringify({
+      ids: ids,
+      market: 'from_token'
+    });
+
+    let options = {
+      url: requestURL,
+      headers: { 'Authorization': 'Bearer ' + token },
+      json: true
+    };
+
+    request.get(options, function(error, response, body) {
+      res.json(body.tracks);
+    });
+  });
+
   // 1. Create Empty Playlist
   app.post('/newPlaylist', function(req, res) {
     let token = req.query.token;

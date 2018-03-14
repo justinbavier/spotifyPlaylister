@@ -263,7 +263,7 @@ function setUpSliders() {
     create: function() {
       $('#tempo-value').text($('#tempo-slider').slider('values', 0));
     },
-    slider: function() {
+    slide: function() {
       $('#tempo-value').text($('#tempo-slider').slider('values', 0));
     }
   });
@@ -328,42 +328,46 @@ function getRecommendations() {
   $('#genres-list input:checked').each(function() {
     genres.push($(this).val());
   });
-  let genresString = genres.join();
-  localStorage.setItem('currentGenres', genresString);
-  $('#current-genres').text(genresString);
+  if (genres[0]) {
+    let genresString = genres.join();
+    localStorage.setItem('currentGenres', genresString);
+    $('#current-genres').text(genresString);
 
-  // Get slider values
-  let audioFeatures = getSliderValues();
-  localStorage.setItem('currentFeatures', JSON.stringify(audioFeatures));
+    // Get slider values
+    let audioFeatures = getSliderValues();
+    localStorage.setItem('currentFeatures', JSON.stringify(audioFeatures));
 
-  // Send the request
-  $.get(
-    '/recommendations?seed_genres=' +
-      genresString +
-      '&' +
-      $.param(audioFeatures) +
-      '&token=' +
-      _token,
-    function(data) {
-      $('#tracks').empty();
-      let trackIds = [];
-      let trackUris = [];
-      if (data.tracks) {
-        if (data.tracks.length > 0) {
-          data.tracks.forEach(function(track) {
-            trackIds.push(track.id);
-            trackUris.push(track.uri);
-          });
-          localStorage.setItem('currentTracks', trackUris.join());
-          renderTracks(trackIds);
+    // Send the request
+    $.get(
+      '/recommendations?seed_genres=' +
+        genresString +
+        '&' +
+        $.param(audioFeatures) +
+        '&token=' +
+        _token,
+      function(data) {
+        $('#tracks').empty();
+        let trackIds = [];
+        let trackUris = [];
+        if (data.tracks) {
+          if (data.tracks.length > 0) {
+            data.tracks.forEach(function(track) {
+              trackIds.push(track.id);
+              trackUris.push(track.uri);
+            });
+            localStorage.setItem('currentTracks', trackUris.join());
+            renderTracks(trackIds);
+          } else {
+            alert('Try more broad parameters');
+          }
         } else {
-          alert('Try more broad parameters');
+          alert('Please pick at least 1 genre!');
         }
-      } else {
-        alert('Please pick at least 1 genre!');
       }
-    }
-  );
+    );
+  } else if (!genres[0]) {
+    alert(`Spotify's recommendation API requires that you pick a genre to send requests!`);
+  }
 }
 
 // function makePlaylist() {
@@ -386,28 +390,29 @@ function getRecommendations() {
 // }
 
 function renderTracks(ids) {
-  $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
-    tracks.forEach(function(track) {
-      let image = track.album.images
-        ? track.album.images[0].url
-        : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
-      let trackElement =
-        '<div class="track-element" id="' +
-        track.uri +
-        '" onclick="play(\'' +
-        track.uri +
-        '\');"><div><img class="album-art" src="' +
-        image +
-        '"/><div><a href="https://open.spotify.com/track/' +
-        track.id +
-        '">' +
-        track.name +
-        '</a><p>' +
-        track.artists[0].name +
-        '</p></div></div></div>';
-      $('#tracks').append(trackElement);
+    $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
+      for (var i = 0; i < 3; i++);
+      tracks.forEach(function(track) {
+        let image = track.album.images
+          ? track.album.images[0].url
+          : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
+        let trackElement =
+          '<div class="track-element col-md-4" id="' +
+          track.uri +
+          '" onclick="play(\'' +
+          track.uri +
+          '\');"><div><div class="row"><img class="album-art" src="' +
+          image +
+          '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/' +
+          track.id +
+          '">' +
+          track.name +
+          '</a><p class="artist-name">' +
+          track.artists[0].name +
+          '</p></div></div></div>';
+        $('#tracks').append(trackElement);
+      });
     });
-  });
 }
 
 function addTracks() {
@@ -422,9 +427,6 @@ function addTracks() {
         localStorage.getItem('currentPlaylist') +
         '&token=' +
         _token
-    );
-    alert(
-      'Success! Tracks added to your playlist! Pick some different genres to add even more!'
     );
     clearLocals();
   } else if (!localStorage.getItem('currentTracks')) {
@@ -441,7 +443,6 @@ function newPlaylist() {
   let playlistName = document.getElementById('playlist-name').value;
   let playlistDescription = document.getElementById('playlist-description')
     .value;
-  alert(playlistDescription);
   if (!playlistName) {
     alert('Please give you playlist a name!');
   } else if (playlistName) {
@@ -463,6 +464,11 @@ function newPlaylist() {
       }
     );
   }
+}
+
+function submitEmail() {
+  let email = document.getElementById('email').value;
+  location.reload();
 }
 
 function clearCache() {

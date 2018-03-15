@@ -5,48 +5,51 @@
 
           <div class="space-after"></div>
 
-          <!--  DESCRIPTION ROW -->
-          <div class="row">
-            <div class="col-md-2"></div>
-
-          </div>
-          <!--  END DESCRIPTION ROW -->
           <div class="space-after"></div>
 
           <!-- TOP SECTION -->
           <div class="row">
-            <div class="col-md-2"></div>
+            <div class="col-md-1"></div>
 
             <!-- TRACKS DISPLAY -->
-            <div id="tracks-display" class="tracks-display col-md-6">
+            <div id="tracks-display" class="tracks-display col-md-7">
               <div id="tracks">
-                <p class="text-center">
+                <p class="description text-center">
                   Join Crosshair Music in using
                   the recommendation algorithm behind Spotify to build a playlist out
                   of seemingly disconnected genres, moods, tempos, etc. It's amazing
                   to discover how seemingly unrelated things can create something
                   beautiful
                 </p>
-                <p class="text-center">Select some genres to get started...</p>
+                <p class="description text-center">Select some genres to get started...</p>
+
+                <!-- GENRES BUTTON -->
+                <div class="row">
+                  <div class="col-md-3"></div>
+                  <button class="btn col-md-6" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
+                </div>
+                <!-- END GENRES BUTTON -->
               </div>
             </div>
             <!-- END TRACKS DISPLAY -->
 
             <!-- LOGO AND SUBMIT PANE -->
-            <div class="col-md-2" id="add-tracks">
-
-                <div class="row">
-                  <div class="col-md-1"></div>
-                  <img class="logo col-md-10" src="/images/crosshair-logo.svg"/>
-                  <div class="col-md-1"></div>
+            <div class="col-md-3" id="add-tracks">
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="logo-container col-md-8">
+                  <img class="logo" src="/images/crosshair-logo.svg"/>
                 </div>
+              </div>
 
-                <div class="space-after"></div>
+              <div class="space-after"></div>
 
-                <div class="row">
-                  <div class="col-md-4"></div>
-                  <button id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" onclick="addTracks();" class="tracks-button col-md-4 btn">Add tracks!</button>
+              <div class="row">
+                <div class="col-md-1"></div>
+                <div class="tracks-button-container col-md-10">
+                  <button class="tracks-button btn col-md-12" id="tracks-button" type="submit" data-toggle="modal" data-target="#success-prompt" onclick="addTracks();">Add tracks!</button>
                 </div>
+              </div>
 
             </div>
             <!-- END LOGO AND SUBMIT PANE -->
@@ -54,80 +57,268 @@
           </div>
           <!--  END TOP SECTION -->
 
-          <!--  MIDDLE SECTION -->
-          <div class="row">
-            <div class="col-md-2"></div>
+            <!--  VALUES SECTION -->
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="box col-md-1">
 
-            <!-- MAJOR/MINOR SWITCH -->
-            <div class="col-md-1" onclick="getRecommendations();">
-              <label class="switch">
-                <input id="mode-value" type="checkbox" checked />
-                <span class="mode-slider round"></span>
-              </label>
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                        <div class="prefs-value text-center" id="popularity-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Popularity</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="popularity" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                      <div class="prefs-slider" id="popularity-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="positivity-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Positivity</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="positivity" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="positivity-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="energy-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Energy</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="energy" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="energy-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="acousticness-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Acoustic</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="acousticness" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="acousticness-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="danceability-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Danceability</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="danceability" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="danceability-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="instrumentalness-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Instrumental</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="instrumentalness" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="instrumentalness-slider"></div>
+                  </div>
+                </div>
+
+                </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="liveness-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Liveness</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="liveness" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="liveness-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="box col-md-1">
+
+                <div class="row">
+                  <div class="value-box">
+                    <div class="value-content">
+                      <div class="prefs-value text-center" id="speechiness-value"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="label-box">
+                    <div class="label-content">
+                      <div class="prefs-label text-center">Speechiness</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div id="speechiness" class="prefs-section">
+                    <div class="slider-spacer"></div>
+                    <div class="prefs-slider" id="speechiness-slider"></div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="mode-label-box col-md-2">
+                  <div class="mode-label-content">
+                    <div class="mode-label text-center">Mode</div>
+                  </div>
+              </div>
+
+              <div class="space-after"></div>
+
+              <div class="mode-text-box col-md-2">
+                <div class="col-md-1"></div>
+
+                <div class="col-md-2" onclick="getRecommendations();">
+                  <label class="switch">
+                    <input id="mode-value" type="checkbox" checked />
+                    <span class="mode-slider round"></span>
+                  </label>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="mode-text text-center" id="mode-text">Minor</div>
+                </div>
+              </div>
+
             </div>
-            <!-- END MAJOR/MINOR SWITCH -->
+            <!--  END VALUES SECTION -->
 
-            <!-- GENRES BUTTON -->
-            <button class="btn col-md-3" data-toggle="modal" data-target="#genre-select" onclick="getGenresList();">Choose genres</button>
-            <!-- END GENRES BUTTON -->
+          <!--  TEMPO SECTION -->
+          <div class="row">
+            <!--  TEMPO VALUE -->
+            <div class="tempo-value-box col-md-1">
+              <div class="tempo-content">
+                <div class="tempo-value" id="tempo-value"></div>
+              </div>
+            </div>
+            <!-- END TEMPO VALUE -->
 
             <!-- TEMPO SLIDER -->
-            <div class="tempo-section col-md-4">
-              <span class="tempo-value" id="tempo-value"></span>
+            <div class="tempo-section col-md-3">
               <div class="tempo-slider" id="tempo-slider"></div>
             </div>
             <!-- END TEMPO SLIDER -->
-
           </div>
-          <!--  END MIDDLE SECTION -->
+          <!--  END TEMPO SECTION -->
 
-          <!--  FADERS SECTION -->
-            <div class="row">
-              <div class="col-md-2"></div>
-              <div id="popularity" class="prefs-section col-md-1">
-                <span class="prefs-value" id="popularity-value"></span>
-                <div class="prefs-slider" id="popularity-slider"></div>
-              </div>
-              <div id="positivity" class="prefs-section col-md-1">
-                <span class="prefs-value" id="positivity-value"></span>
-                <div class="prefs-slider" id="positivity-slider"></div>
-              </div>
-              <div id="energy" class="prefs-section col-md-1">
-                <span class="prefs-value" id="energy-value"></span>
-                <div class="prefs-slider" id="energy-slider"></div>
-              </div>
-              <div id="acousticness" class="prefs-section col-md-1">
-                <span class="prefs-value" id="acousticness-value"></span>
-                <div class="prefs-slider" id="acousticness-slider"></div>
-              </div>
-              <div id="danceability" class="prefs-section col-md-1">
-                <span class="prefs-value" id="danceability-value"></span>
-                <div class="prefs-slider" id="danceability-slider"></div>
-              </div>
-              <div id="instrumentalness" class="prefs-section col-md-1">
-                <span class="prefs-value" id="instrumentalness-value"></span>
-                <div class="prefs-slider" id="instrumentalness-slider"></div>
-              </div>
-              <div id="liveness" class="prefs-section col-md-1">
-                <span class="prefs-value" id="liveness-value"></span>
-                <div class="prefs-slider" id="liveness-slider"></div>
-              </div>
-              <div id="speechiness" class="prefs-section col-md-1">
-                <span class="prefs-value" id="speechiness-value"></span>
-                <div class="prefs-slider" id="speechiness-slider"></div>
-              </div>
-            </div>
-          <!-- END FADERS SECTION -->
+
+
 
           <div class="space-after"></div>
 
-          <!-- NEW PLAYLIST BUTTON -->
-          <div class="row">
-            <div class="col-md-1"></div>
-            <button id="submit-button" type="submit" data-toggle="modal" data-target="#playlist-setup" class="submit-button col-md-4 btn">Create new playlist</button>
-            <div class="col-md-2"></div>
-          </div>
-          <!-- END NEW PLAYLIST BUTTON -->
+
 
         </div>
         <!--  BOTTOM OF CARD -->

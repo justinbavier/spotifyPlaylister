@@ -115,12 +115,27 @@ body {
 /* ==================== */
 /* ===== Switches ===== */
 /* ==================== */
+.mode-label-box {
+  border: 2px #ffffff solid;
+  border-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 0 auto;
+}
+
+.mode-text-box {
+  border: 2px #ffffff solid;
+  border-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  margin: 0 auto;
+}
+
 /* The switch - the box around the slider */
 .switch {
   /* position: relative; */
   /* display: inline-block; */
-  width: 60px;
-  height: 25px;
+  height: 55px;
   margin-left: 1rem;
 }
 
@@ -167,13 +182,43 @@ input:not(:checked) + .mode-slider {
 }
 
 input:checked + .mode-slider:before {
-  -webkit-transform: translateX(34px);
-  -ms-transform: translateX(34px);
-  transform: translateX(34px);
+  -webkit-transform: translateY(34px);
+  -ms-transform: translateY(34px);
+  transform: translateY(34px);
 }
 
 .mode-label {
   color: #ffffff;
+  font-size: 2rem;
+}
+
+.mode-text {
+  padding-top: 1rem;
+  padding-left: -2rem;
+  color: #1db954;
+  font-size: 2rem;
+}
+
+.tempo-value-box {
+  border: 2px #ffffff solid;
+  position: relative;
+}
+
+.tempo-value-box:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%;
+}
+
+.tempo-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.tempo-value {
+  font-size: 1.75rem;
+  color: #1db954;
 }
 
 .tempo-label {
@@ -182,16 +227,8 @@ input:checked + .mode-slider:before {
 
 .tempo-section {
   background: url('images/tempo-background.svg') top no-repeat;
-  height: 12rem;
-  margin-left: 0rem;
+  height: 9rem;
   /* margin: 0 auto; */
-}
-
-.tempo-value {
-  font-size: 1.75rem;
-  color: #1db954;
-  margin-left: 5rem;
-
 }
 
 .tempo-slider {
@@ -235,67 +272,47 @@ html .ui-button.ui-state-disabled:active {
 /* ======================= */
 /* ===== Preferences ===== */
 /* ======================= */
-.instructions {
-  font-size: 2.4rem;
+.mixer-display {
+  border: 2px #ffffff solid;
+  border-radius: .5rem;
   color: white;
+  margin: 0 auto;
+  padding: 0;
 }
 
-.faders-container {
-  margin-left: 5%;
-  margin-right: 5%;
+.box {
+  margin: 0 auto;
 }
 
-.prefs-content {
-  /* margin-left: 2.5%; */
-  /* width: 12.5rem; */
+.value-box {
+  border: 2px #ffffff solid;
+  border-radius: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 .prefs-value {
-  font-size: 1.75rem;
+  font-size: 2.25rem;
   color: #1db954;
-  margin: 0 auto;
-  text-align: center;
 }
+
+.label-box {
+  border: 2px #ffffff solid;
+  border-radius: 0.5rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+.prefs-label {
+  color: #ffffff;
+  font-size: 1.25rem;
+}
+
 
 .prefs-section {
   height: 28rem;
   margin: 0 auto;
-}
-
-#popularity {
-  background: url('images/mixer-01.svg') top no-repeat;
-}
-#positivity {
-  background: url('images/mixer-02.svg') top no-repeat;
-}
-#energy {
-  background: url('images/mixer-03.svg') top no-repeat;
-}
-#acousticness {
-  background: url('images/mixer-04.svg') top no-repeat;
-}
-#danceability {
-  background: url('images/mixer-05.svg') top no-repeat;
-}
-#instrumentalness {
-  background: url('images/mixer-06.svg') top no-repeat;
-}
-#liveness {
-  background: url('images/mixer-07.svg') top no-repeat;
-}
-#speechiness {
-  background: url('images/mixer-08.svg') top no-repeat;
-}
-
-.prefs-link {
-  margin-top: 1.75rem;
-}
-
-.prefs-text {
-  font-size: 1.5rem;
-  color: #ffffff;
-  /* width: 12.5rem; */
-  text-align: center;
+  background: url('images/mixer.svg') top no-repeat;
 }
 
 a:hover {
@@ -303,12 +320,15 @@ a:hover {
   color: #ffffff;
 }
 
+.slider-spacer {
+  height: 5rem;
+}
+
 .prefs-slider {
   margin: 0 auto;
-  margin-top: 3.5rem;
-  height: 16.5rem;
   width: 0.1rem;
   background: transparent;
+  height: 18.5rem;
 }
 
 .ui-widget-header .ui-slider-range {
@@ -329,7 +349,6 @@ html .ui-button.ui-state-disabled:active {
   width: 5rem;
   height: 5rem;
   margin-left: -1.75rem;
-  margin-top: 0rem;
 }
 
 .ui-widget.ui-widget-content {
@@ -341,33 +360,31 @@ html .ui-button.ui-state-disabled:active {
   touch-action: none;
 }
 
+.ui-slider-vertical {
+
+}
+
 /* ================== */
 /* ===== Submit ===== */
 /* ================== */
 .tracks-display {
-  /* width: 80%; */
   height: 35%;
   overflow-y: hidden;
   border: 2px #ffffff solid;
-  border-radius: 1.5rem;
+  border-radius: .5rem;
   padding: 20px;
   color: white;
-}
-
-.tracks-display {
   margin: 0 auto;
 }
 
 .track-element {
   padding-right: 2.5rem;
-  padding-top: 2.5rem;
-  /* This is sooooooooooooooo hacky */
   padding-bottom: 15rem;
 }
 
-.track-element > div {
+/* .track-element > div {
   display: inherit;
-}
+} */
 
 .album-art {
   width: 150;
@@ -376,27 +393,33 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .track-name {
-  margin: 0 auto;
-  padding-top: 4rem;
+  font-size: 1.5rem;
 }
 
 .artist-name {
-  margin: 0 auto;
+  font-size: 1.5rem;
+}
+
+#add-tracks {
+  border: 2px #ffffff solid;
+  height: 35%;
+  border-radius: 0.5rem;
+  padding-top: 2.5rem;
 }
 
 .logo {
   margin: 0 auto;
+  width: 75%;
 }
 
-#add-tracks {
-  height: 35%;
-  border: 2px #ffffff solid;
-  border-radius: 1.5rem;
-  padding-top: 20px;
-  color: white;
+.tracks-button-container {
+  padding-top: 3.5rem;
 }
 
-#tracks-button {
-  /* border-radius: 1.5rem; */
-  align-content: center;
+.tracks-button {
+  margin: 0 auto;
+}
+
+#tracks .description {
+  font-size: 2rem;
 }

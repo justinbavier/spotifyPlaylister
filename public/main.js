@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+// const redirectUri = 'http://crosshair-playlist.herokuapp.com';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -37,6 +37,7 @@ if (!_token) {
 // Page Setup
 // showUser();
 setUpSliders();
+setUpMode();
 
 $(function() {
   $('[data-toggle="popover"]').popover();
@@ -122,7 +123,12 @@ function getGenresList() {
   });
 }
 
+function setUpMode() {
+  $('#mode-value').text('Minor');
+}
+
 function setUpSliders() {
+
   $('#positivity-slider').slider({
     orientation: 'vertical',
     min: 0,
@@ -304,8 +310,10 @@ function getSliderValues() {
 
   if ($('#mode-value').is(':checked')) {
     values['target_mode'] = 0;
+    $('#mode-text').text('Minor');
   } else if ($('#mode-value').is(':not(:checked)')) {
     values['target_mode'] = 1;
+    $('#mode-text').text('Major');
   }
 
   values['target_popularity'] = target_popularity;
@@ -366,7 +374,9 @@ function getRecommendations() {
       }
     );
   } else if (!genres[0]) {
-    alert(`Spotify's recommendation API requires that you pick a genre to send requests!`);
+    alert(
+      `Spotify's recommendation API requires that you pick a genre to send requests!`
+    );
   }
 }
 
@@ -390,29 +400,28 @@ function getRecommendations() {
 // }
 
 function renderTracks(ids) {
-    $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
-      for (var i = 0; i < 3; i++);
-      tracks.forEach(function(track) {
-        let image = track.album.images
-          ? track.album.images[0].url
-          : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
-        let trackElement =
-          '<div class="track-element col-md-4" id="' +
-          track.uri +
-          '" onclick="play(\'' +
-          track.uri +
-          '\');"><div><div class="row"><img class="album-art" src="' +
-          image +
-          '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/' +
-          track.id +
-          '">' +
-          track.name +
-          '</a><p class="artist-name">' +
-          track.artists[0].name +
-          '</p></div></div></div>';
-        $('#tracks').append(trackElement);
-      });
+  $.get('/tracks?ids=' + ids.join() + '&token=' + _token, function(tracks) {
+    tracks.forEach(function(track) {
+      let image = track.album.images
+        ? track.album.images[0].url
+        : 'https://upload.wikimedia.org/wikipedia/commons/3/3c/No-album-art.png';
+      let trackElement =
+        '<div class="track-element col-md-4" id="' +
+        track.uri +
+        '" onclick="play(\'' +
+        track.uri +
+        '\');"><div><div class="row"><img class="album-art" src="' +
+        image +
+        '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/' +
+        track.id +
+        '"><p class="text-center">' +
+        track.name +
+        '</p></a><p class="artist-name text-center">' +
+        track.artists[0].name +
+        '</p></div></div></div>';
+      $('#tracks').append(trackElement);
     });
+  });
 }
 
 function addTracks() {

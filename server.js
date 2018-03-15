@@ -6,6 +6,7 @@ var app = express();
 
 require('./routes/spotifyRoutes')(app);
 require('./routes/navRoutes')(app);
+require('./routes/mailRoutes')(app);
 
 app.use(express.static(__dirname + '/public'));
 

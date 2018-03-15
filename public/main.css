@@ -117,7 +117,7 @@ body {
 /* ==================== */
 .mode-label-box {
   border: 2px #ffffff solid;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 0 auto;
@@ -125,7 +125,7 @@ body {
 
 .mode-text-box {
   border: 2px #ffffff solid;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
   margin: 0 auto;
@@ -274,7 +274,7 @@ html .ui-button.ui-state-disabled:active {
 /* ======================= */
 .mixer-display {
   border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border-radius: 0rem;
   color: white;
   margin: 0 auto;
   padding: 0;
@@ -286,7 +286,7 @@ html .ui-button.ui-state-disabled:active {
 
 .value-box {
   border: 2px #ffffff solid;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -298,7 +298,7 @@ html .ui-button.ui-state-disabled:active {
 
 .label-box {
   border: 2px #ffffff solid;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   padding-top: .5rem;
   padding-bottom: .5rem;
 }
@@ -369,9 +369,9 @@ html .ui-button.ui-state-disabled:active {
 /* ================== */
 .tracks-display {
   height: 35%;
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border-radius: 0rem;
   padding: 20px;
   color: white;
   margin: 0 auto;
@@ -403,7 +403,7 @@ html .ui-button.ui-state-disabled:active {
 #add-tracks {
   border: 2px #ffffff solid;
   height: 35%;
-  border-radius: 0.5rem;
+  border-radius: 0rem;
   padding-top: 2.5rem;
 }
 

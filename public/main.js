@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+// const redirectUri = 'http://crosshair-playlist.herokuapp.com';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -424,6 +424,11 @@ function renderTracks(ids) {
   });
 }
 
+function updatePlaylist() {
+  let latestPlaylist = '<iframe class="spotify-player col-md-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>'
+  $('#spotify-player').append(latestPlaylist);
+}
+
 function addTracks() {
   if (localStorage.getItem('currentTracks')) {
     $.post(
@@ -432,6 +437,7 @@ function addTracks() {
         '&token=' +
         _token
     );
+    updatePlaylist();
     clearLocals();
   } else if (!localStorage.getItem('currentTracks')) {
     alert(`There's no tracks to add! Pick a genre...`);

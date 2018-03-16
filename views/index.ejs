@@ -388,25 +388,35 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h4 class="modal-title">
-                    <p>Enter your email address to get the playlist when its all finished!</p>
+                    <p class="text-center">Enter your email address to get the playlist when its all finished!</p>
                   </h4>
                 </div>
                 <form>
                   <div class="modal-body">
-                    <div class="form-group col-md-6">
-                      <label for="FNAME"></label>
-                      <input type="text" class="form-control" id="FNAME" placeholder="First Name">
+                    <div class="row">
+                      <div class="form-group col-md-6">
+                        <label for="FNAME"></label>
+                        <input type="text" class="form-control" id="FNAME" placeholder="First Name">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <label for="LNAME"></label>
+                        <input type="text" class="form-control" id="LNAME" placeholder="Last Name">
+                      </div>
                     </div>
-                    <div class="form-group col-md-6">
-                      <label for="LNAME"></label>
-                      <input type="text" class="form-control" id="LNAME" placeholder="Last Name">
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                        <label for="email"></label>
+                        <input type="text" class="form-control" id="email" placeholder="Email">
+                      </div>
                     </div>
-                    <div class="form-group">
-                      <label for="email"></label>
-                      <input type="text" class="form-control" id="email" placeholder="Email">
+                    <div class="row">
+                      <p class="text-center">And check out the playlist so far...</p>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-3"></div>
+                      <iframe class="spotify-player col-md-6" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                     </div>
                   </div>
-                  <iframe class="spotify-player" src="https://open.spotify.com/embed/user/bavier123/playlist/3lQ94EvUZ5eockX8VJ1Zom" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
                   <div class="modal-footer">
                     <button type="button" class="btn" data-dismiss="modal" onclick="submitEmail();">Thank you!</button>
                   </div>

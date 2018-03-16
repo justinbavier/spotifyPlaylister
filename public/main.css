@@ -121,7 +121,7 @@ body {
   border: 2px #ffffff solid;
   border-radius: .5rem;
   padding-top: .75rem;
-  padding-bottom: 1rem;
+  padding-bottom: .75rem;
   margin: 0 auto;
 }
 
@@ -129,7 +129,7 @@ body {
   border: 2px #ffffff solid;
   border-radius: .5rem;
   padding-top: .75rem;
-  padding-bottom: 1rem;
+  padding-bottom: .75rem;
   margin: 0 auto;
 }
 
@@ -205,7 +205,7 @@ input:checked + .mode-slider:before {
   border: 2px #ffffff solid;
   border-radius: .5rem;
   padding-top: .75rem;
-  padding-bottom: 1rem;
+  padding-bottom: .75rem;
   margin: 0 auto;
 }
 
@@ -232,7 +232,7 @@ input:checked + .mode-slider:before {
 .tempo-slider {
   width: 0.1rem;
   margin: 0 auto;
-  background: blue;
+  background: transparent;
   height: 8rem;
 }
 

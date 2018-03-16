@@ -368,13 +368,14 @@ html .ui-button.ui-state-disabled:active {
 /* ===== Submit ===== */
 /* ================== */
 .tracks-display {
-  height: 35%;
   /* overflow-y: hidden; */
   border: 2px #ffffff solid;
   border-radius: 0rem;
-  padding: 20px;
   color: white;
   margin: 0 auto;
+  padding-top: 2.5rem;
+  padding-bottom: 4.5rem;
+  height: 32.5rem;
 }
 
 .track-element {
@@ -402,9 +403,10 @@ html .ui-button.ui-state-disabled:active {
 
 #add-tracks {
   border: 2px #ffffff solid;
-  height: 35%;
   border-radius: 0rem;
   padding-top: 2.5rem;
+  padding-bottom: 4.5rem;
+  height: 32.5rem;
 }
 
 .logo {

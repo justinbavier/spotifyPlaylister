@@ -364,8 +364,8 @@ html .ui-button.ui-state-disabled:active {
 /* ================== */
 .tracks-display {
   overflow-y: hidden;
-  /* border: 2px #ffffff solid; */
-  /* border-radius:s 0rem; */
+  border: 2px #ffffff solid;
+  border-radius: 0.5rem;
   color: white;
   margin: 0 auto;
   padding-top: .5rem;

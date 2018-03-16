@@ -221,7 +221,7 @@ input:checked + .mode-slider:before {
 
 .tempo-section {
   background: url('images/tempo-background.svg') top no-repeat;
-  height: 19rem;
+  height: 18rem;
   /* margin: 0 auto; */
 }
 
@@ -233,7 +233,7 @@ input:checked + .mode-slider:before {
   width: 0.1rem;
   margin: 0 auto;
   background: blue;
-  height: 11rem;
+  height: 8rem;
 }
 
 #tempo-slider .ui-state-default,

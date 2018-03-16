@@ -39,34 +39,6 @@ if (!_token) {
 setUpSliders();
 setUpMode();
 
-let deviceId;
-
-// Initialise Web Playback SDK
-function onSpotifyPlayerAPIReady() {
-  let player = new Spotify.Player({
-    name: 'Crosshair',
-    getOAuthToken: function(cb) {
-      cb(_token);
-    },
-    volume: 0.8
-  });
-
-  player.on('ready', function(data) {
-    deviceId = data.device_id;
-    alert(deviceId);
-    localStorage.setItem('crosshairBrowserDeviceID', data.device_id);
-  });
-
-  player.on('player_state_changed', function(data) {
-    if (data) {
-      let currentTrack = data.track_window.current_track.uri;
-      updateCurrentlyPlaying(currentTrack);
-    }
-  });
-
-  player.connect();
-}
-
 $(function() {
   $('[data-toggle="popover"]').popover();
 });
@@ -393,7 +365,6 @@ function getRecommendations() {
             });
             localStorage.setItem('currentTracks', trackUris.join());
             renderTracks(trackIds);
-            play(trackUris.join());
           } else {
             alert('Try more broad parameters');
           }
@@ -515,24 +486,6 @@ function submitEmail() {
   location.reload();
 }
 
-
-
-function updateCurrentlyPlaying(track) {
-  $('.track-element').removeClass('current-track');
-  if (document.getElementById(track)) {
-    document.getElementById(track).className += ' current-track';
-  }
-}
-
-function play(track) {
-  let playbackSetting = 1;
-  alert(deviceId);
-  if (playbackSetting != 0) {
-    $.post(
-      '/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token
-    );
-  }
-}
 
 function clearCache() {
   localStorage.setItem('currentTracks', '');

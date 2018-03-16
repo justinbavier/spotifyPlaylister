@@ -218,43 +218,4 @@ module.exports = app => {
     });
   });
 
-  app.post('/play', function(req, res) {
-    let tracks = req.query.tracks;
-    let device_id = req.query.device_id;
-    let token = req.query.token;
-
-    let requestURL = spotifyBaseUrl + 'me/player/play?' +
-    querystring.stringify({
-      device_id: device_id
-    });
-
-    let options = {
-      url: requestURL,
-      headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
-      json: true,
-      dataType: 'json',
-      body: { "uris": tracks.split(',') }
-    };
-
-    request.put(options, function(error, response, body) {
-      res.sendStatus(200);
-    });
-  });
-
-  app.get('/devices', function(req, res) {
-
-    let token = req.query.token;
-
-    let requestURL = spotifyBaseUrl + 'me/player/devices';
-
-    let options = {
-      url: requestURL,
-      headers: { 'Authorization': 'Bearer ' + token },
-      json: true
-    };
-
-    request.get(options, function(error, response, body) {
-      res.send(body.devices);
-    });
-  });
 };

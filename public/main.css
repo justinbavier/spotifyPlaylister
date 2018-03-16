@@ -20,6 +20,7 @@ body {
       GradientType=0
     );
   background-repeat: no-repeat;
+  overflow: hidden;
 }
 
 ::-webkit-scrollbar {

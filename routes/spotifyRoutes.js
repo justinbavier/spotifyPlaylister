@@ -194,8 +194,8 @@ module.exports = app => {
     let token = req.query.token;
     //let features = req.query.features;
     let userId;
-    let playlistUrl = 'https://api.spotify.com/v1/users/bavier123/playlists/3lQ94EvUZ5eockX8VJ1Zom'
-    // let playlistUrl = 'https://api.spotify.com/v1/users/121486007/playlists/4C0mPY2RLceeTo2lGKS6gd'
+    let playlistUrl =
+      'https://api.spotify.com/v1/users/bavier123/playlists/3lQ94EvUZ5eockX8VJ1Zom';
 
     // let playlistUrl = req.query.playlistUrl;
 

@@ -481,9 +481,9 @@ function submitEmail() {
   '&LNAME=' +
   LNAME,
   function() {
-    console.log('somthing');
+    console.log('success');
   });
-  // location.reload();
+  location.reload();
 }
 
 function clearCache() {

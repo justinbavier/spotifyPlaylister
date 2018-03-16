@@ -421,3 +421,7 @@ html .ui-button.ui-state-disabled:active {
 #tracks .description {
   font-size: 1.5rem;
 }
+
+.spotify-player {
+  margin: 0 auto;
+}

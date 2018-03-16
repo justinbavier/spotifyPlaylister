@@ -158,15 +158,16 @@ body {
   transition: 0.4s;
   border-radius: 34px;
   border: 2px solid #ffffff;
+  width: 25px;
 }
 
 .mode-slider:before {
   position: absolute;
   content: '';
-  height: 18px;
-  width: 18px;
-  top: 1.5px;
-  left: 2px;
+  height: 23px;
+  width: 23px;
+  top: -.5px;
+  left: -1px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;

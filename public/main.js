@@ -500,8 +500,8 @@ function onSpotifyPlayerAPIReady() {
   });
 
   player.on('ready', function(data) {
-    alert('hello');
     deviceId = data.device_id;
+    alert(deviceId);
     localStorage.setItem('crosshairBrowserDeviceID', data.device_id);
   });
 

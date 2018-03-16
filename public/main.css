@@ -5,6 +5,7 @@
 html {
   height: 100%;
   background: #ffffff;
+  overflow: hidden;
 }
 
 body {
@@ -59,12 +60,12 @@ body {
 
 .card {
   background: rgba(0, 0, 0, 0.85);
-  border-radius: 1.5rem;
+  border-radius: 0rem;
   padding: 5%;
   padding-top: .5rem;
   padding-bottom: 2.5%;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
 }
 
 /* ================== */

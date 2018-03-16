@@ -322,7 +322,7 @@ a:hover {
 .prefs-slider {
   margin: 0 auto;
   width: 0.1rem;
-  background: blue;
+  background: transparent;
   height: 16.5rem;
 }
 

@@ -522,12 +522,9 @@ function updateCurrentlyPlaying(track) {
   }
 }
 
-function setDevice(id, name) {
-  deviceId = id;
-}
-
 function play(track) {
   let playbackSetting = 1;
+  alert(deviceId);
   if (playbackSetting != 0) {
     $.post(
       '/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token

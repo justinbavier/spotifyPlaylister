@@ -425,14 +425,11 @@ function renderTracks(ids) {
 
 function addTracks() {
   if (
-    localStorage.getItem('currentTracks') &&
-    localStorage.getItem('currentPlaylist')
+    localStorage.getItem('currentTracks')
   ) {
     $.post(
       '/addTracks?tracks=' +
         localStorage.getItem('currentTracks') +
-        '&playlistUrl=' +
-        localStorage.getItem('currentPlaylist') +
         '&token=' +
         _token
     );

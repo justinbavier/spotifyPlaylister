@@ -368,8 +368,8 @@ html .ui-button.ui-state-disabled:active {
   /* border-radius:s 0rem; */
   color: white;
   margin: 0 auto;
-  padding-top: .5rem;
-  padding-bottom: 1rem;
+  padding-top: 1.5rem;
+  padding-bottom: .5rem;
   height: 25rem;
 }
 

@@ -368,7 +368,7 @@ html .ui-button.ui-state-disabled:active {
 /* ===== Submit ===== */
 /* ================== */
 .tracks-display {
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
   border: 2px #ffffff solid;
   border-radius: 0rem;
   color: white;

@@ -118,16 +118,16 @@ body {
 /* ===== Switches ===== */
 /* ==================== */
 .mode-label-box {
-  border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border: 1.5px #ffffff solid;
+  border-radius: .5rem .5rem 0rem 0rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
   margin: 0 auto;
 }
 
 .mode-text-box {
-  border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border: 1.5px #ffffff solid;
+  border-radius: 0rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
   margin: 0 auto;
@@ -202,8 +202,8 @@ input:checked + .mode-slider:before {
 }
 
 .tempo-value-box {
-  border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border: 1.5px #ffffff solid;
+  border-radius: 0rem;
   padding-top: .75rem;
   padding-bottom: .75rem;
   margin: 0 auto;
@@ -280,8 +280,8 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .value-box {
-  border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border: 1.5px #ffffff solid;
+  border-radius: .5rem .5rem 0rem 0rem;
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -292,8 +292,8 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .label-box {
-  border: 2px #ffffff solid;
-  border-radius: .5rem;
+  border: 1.5px #ffffff solid;
+  border-radius: 0rem 0rem .5rem .5rem;
   padding-top: .5rem;
   padding-bottom: .5rem;
 }

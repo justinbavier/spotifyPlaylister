@@ -390,11 +390,11 @@ html .ui-button.ui-state-disabled:active {
 }
 
 .track-name {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 .artist-name {
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 #add-tracks {

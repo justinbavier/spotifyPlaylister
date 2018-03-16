@@ -365,6 +365,7 @@ function getRecommendations() {
             });
             localStorage.setItem('currentTracks', trackUris.join());
             renderTracks(trackIds);
+            play(trackUris.join());
           } else {
             alert('Try more broad parameters');
           }
@@ -414,7 +415,7 @@ function renderTracks(ids) {
         image +
         '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/' +
         track.id +
-        '" target="_blanke"><p class="text-center">' +
+        '" target="_blank"><p class="text-center">' +
         track.name +
         '</p></a><p class="artist-name text-center">' +
         track.artists[0].name +
@@ -484,6 +485,54 @@ function submitEmail() {
     console.log('success');
   });
   location.reload();
+}
+
+let deviceId;
+
+// Initialise Web Playback SDK
+function onSpotifyPlayerAPIReady() {
+  let player = new Spotify.Player({
+    name: 'Crosshair',
+    getOAuthToken: function(cb) {
+      cb(_token);
+    },
+    volume: 0.8
+  });
+
+  player.on('ready', function(data) {
+    alert('hello');
+    deviceId = data.device_id;
+    localStorage.setItem('crosshairBrowserDeviceID', data.device_id);
+  });
+
+  player.on('player_state_changed', function(data) {
+    if (data) {
+      let currentTrack = data.track_window.current_track.uri;
+      updateCurrentlyPlaying(currentTrack);
+    }
+  });
+
+  player.connect();
+}
+
+function updateCurrentlyPlaying(track) {
+  $('.track-element').removeClass('current-track');
+  if (document.getElementById(track)) {
+    document.getElementById(track).className += ' current-track';
+  }
+}
+
+function setDevice(id, name) {
+  deviceId = id;
+}
+
+function play(track) {
+  let playbackSetting = 1;
+  if (playbackSetting != 0) {
+    $.post(
+      '/play?tracks=' + track + '&device_id=' + deviceId + '&token=' + _token
+    );
+  }
 }
 
 function clearCache() {

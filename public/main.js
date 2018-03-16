@@ -16,8 +16,8 @@ let _token = hash.access_token;
 
 const authEndpoint = 'https://accounts.spotify.com/authorize';
 const clientId = 'b8f7c75be8df4476bbd74e05fe622524';
-const redirectUri = 'http://crosshair-playlist.herokuapp.com';
-// const redirectUri = 'http://localhost:5000';
+//const redirectUri = 'http://crosshair-playlist.herokuapp.com';
+const redirectUri = 'http://localhost:5000';
 const scopes = [
   'streaming',
   'user-read-birthdate',
@@ -258,6 +258,7 @@ function setUpSliders() {
   });
 
   $('#tempo-slider').slider({
+    orientation: 'vertical',
     min: 0,
     max: 200,
     step: 1,

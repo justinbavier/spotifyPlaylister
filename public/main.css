@@ -120,7 +120,7 @@ body {
 .mode-label-box {
   border: 2px #ffffff solid;
   border-radius: .5rem;
-  padding-top: 1rem;
+  padding-top: .75rem;
   padding-bottom: 1rem;
   margin: 0 auto;
 }
@@ -128,7 +128,7 @@ body {
 .mode-text-box {
   border: 2px #ffffff solid;
   border-radius: .5rem;
-  padding-top: 1rem;
+  padding-top: .75rem;
   padding-bottom: 1rem;
   margin: 0 auto;
 }
@@ -203,43 +203,37 @@ input:checked + .mode-slider:before {
 
 .tempo-value-box {
   border: 2px #ffffff solid;
-  position: relative;
-}
-
-.tempo-value-box:after {
-    content: "";
-    display: block;
-    padding-bottom: 100%;
-}
-
-.tempo-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
+  border-radius: .5rem;
+  padding-top: .75rem;
+  padding-bottom: 1rem;
+  margin: 0 auto;
 }
 
 .tempo-value {
-  font-size: 1.75rem;
+  font-size: 2rem;
   color: #1db954;
 }
 
 .tempo-label {
   color: #ffffff;
+  font-size: 2rem;
 }
 
 .tempo-section {
   background: url('images/tempo-background.svg') top no-repeat;
-  height: 9rem;
+  height: 20rem;
   /* margin: 0 auto; */
 }
 
+.tempo-slider-spacer {
+  height: 3rem;
+}
+
 .tempo-slider {
-  background: transparent;
-  border: none;
-  margin-left: 5.5rem;
-  height: .01rem;
-  margin-top: 3.55rem;
-  width: 20rem;
+  width: 0.1rem;
+  margin: 0 auto;
+  background: blue;
+  height: 12.5rem;
 }
 
 #tempo-slider .ui-state-default,
@@ -249,13 +243,12 @@ input:checked + .mode-slider:before {
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
   border: none;
-  background: white;
+  background: url('images/fader.svg') center no-repeat;
   outline: none;
   cursor: pointer;
-  background: url('images/fader-horizontal.svg') center no-repeat;
   height: 5rem;
   width: 5rem;
-  margin-top: -2.1rem;
+  margin-top: -1.75rem;
 }
 
 #tempo-slider .ui-widget.ui-widget-content {

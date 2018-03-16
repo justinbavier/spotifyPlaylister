@@ -412,9 +412,9 @@ function renderTracks(ids) {
         track.uri +
         '\');"><div><div class="row"><img class="album-art" src="' +
         image +
-        '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/" target="_blank"' +
+        '"/></div><div class="row"><a class="track-name" href="https://open.spotify.com/track/' +
         track.id +
-        '"><p class="text-center">' +
+        '" target="_blanke"><p class="text-center">' +
         track.name +
         '</p></a><p class="artist-name text-center">' +
         track.artists[0].name +
